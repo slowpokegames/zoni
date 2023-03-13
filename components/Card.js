@@ -18,12 +18,13 @@ function Card({
     setFlippedIndexes,
     topOfDeck,
     setTopOfDeck,
+    spun,
 }) {
     const [selected, setSelect] = useState(false)
     const [flipped, setFlip] = useState(false)
     const {transform, opacity} = useSpring({
         opacity: flipped ? 0 : 1,
-        transform: `perspective(600px) rotateX(${flipped ? 0 : 180}deg) scale(${selected ? 1.2 : 1}) `,
+        transform: `perspective(600px) rotateX(${flipped ? 0 : 180}deg) scale(${selected ? 1.2 : 1}) rotateZ(${spun ? 0 : 180}deg) `,
         config: {mass: 5, tension: 500, friction: 80},
     })
 
@@ -58,17 +59,17 @@ function Card({
     
     const onCardClick = () => {
         if (!flipped && selectedCount < 4) {
-            if (!shown[id].selected) {
-                setSelect(state => !state)
+            if (!selected) {
+                setSelect(state => true)
                 setSelectedCount(selectedCount + 1)
                 const newIndexes = [...selectedIndexes]
                 newIndexes.push(id)
                 setSelectedIndexes(newIndexes)
             } else {
                 let idx = selectedIndexes.indexOf(id)
-                setSelect(state => !state)
+                setSelect(state => false)
                 setSelectedCount(selectedCount - 1)
-                const newIndexes = selectedIndexes.filter(i => i != idx)
+                const newIndexes = selectedIndexes.filter(i => i !== id)
                 setSelectedIndexes(newIndexes)
             }
         }

@@ -21,6 +21,7 @@ function ZoniGame({options, setOptions, highScore, setHighScore}) {
             const c = {
                 cardId: cardIds[i],
                 selected: false,
+                spun: Math.random() > 0.5,
             }
             newGame.push(c)
         }
@@ -81,6 +82,7 @@ function ZoniGame({options, setOptions, highScore, setHighScore}) {
             newGame[selectedIndexes[0]].selected = true
             newGame[selectedIndexes[1]].selected = true
             newGame[selectedIndexes[2]].selected = true
+            newGame[selectedIndexes[3]].selected = true
             setGame(newGame)
 
             const newIndexes = [...selectedIndexes]
@@ -113,6 +115,7 @@ function ZoniGame({options, setOptions, highScore, setHighScore}) {
                   setSelectedIndexes={setSelectedIndexes}
                   topOfDeck={topOfDeck}
                   setTopOfDeck={setTopOfDeck}
+                  spun={card.spun}
                       />
                       </div>
               ))}
