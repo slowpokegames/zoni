@@ -18,13 +18,14 @@ function Card({
     setFlippedIndexes,
     topOfDeck,
     setTopOfDeck,
-    spun,
+    //spunArg,
 }) {
     const [selected, setSelect] = useState(false)
     const [flipped, setFlip] = useState(false)
+    const [spun, setSpun] = useState(Math.random() > 0.5)
     const {transform, opacity} = useSpring({
         opacity: flipped ? 0 : 1,
-        transform: `perspective(600px) rotateX(${flipped ? 0 : 180}deg) scale(${selected ? 1.2 : 1}) rotateZ(${spun ? 0 : 180}deg) `,
+        transform: `perspective(600px) rotateX(${flipped ? 0 : 180}deg) scale(${selected ? 1.2 : 1}) rotateZ(${spun ? 180 : 0}deg) `,
         config: {mass: 5, tension: 500, friction: 80},
     })
 
@@ -68,6 +69,7 @@ function Card({
             } else {
                 let idx = selectedIndexes.indexOf(id)
                 setSelect(state => false)
+                setSpun(state => !state)
                 setSelectedCount(selectedCount - 1)
                 const newIndexes = selectedIndexes.filter(i => i !== id)
                 setSelectedIndexes(newIndexes)
@@ -76,7 +78,9 @@ function Card({
     }
 
   return (
-    <div onClick={onCardClick}>
+    <div onClick={onCardClick}
+        style={{
+        }}>
       <a.div
         className="c back"
         style={{
@@ -87,9 +91,10 @@ function Card({
       <a.div
         className="c front"
         style={{
-            opacity,
             transform: transform.interpolate(t => `${t} rotateX(180deg) rotateZ(0deg)`),
+            opacity,
             "backgroundImage": "url(" + imgName(shown[id].cardId, true) + ")",
+            boxShadow: `0 ${spun ? -4 : 4}px 8px 0 rgba(0, 0, 0, 0.2), 0 ${spun ? -6 : 6}px 20px 0 rgba(0, 0, 0, 0.19)`,
         }}
           />
     </div>

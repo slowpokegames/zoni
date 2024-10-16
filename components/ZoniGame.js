@@ -115,7 +115,7 @@ function ZoniGame({options, setOptions, highScore, setHighScore}) {
                   setSelectedIndexes={setSelectedIndexes}
                   topOfDeck={topOfDeck}
                   setTopOfDeck={setTopOfDeck}
-                  spun={card.spun}
+                  //spun={card.spun}
                       />
                       </div>
               ))}
