@@ -61,6 +61,7 @@ export default function App() {
                 <img src="cards/instructions.png"></img>
           </div>
       )}
+      <img src="https://www.cutercounter.com/hits.php?id=hexqxcaq&nd=6&style=1" border="0" alt="visit counter"></img>
           <style jsx global>
   {`
     body {
@@ -148,28 +149,28 @@ export default function App() {
 
     @media only screen and (min-width: 400px) {
       #cards {
-        width: ${130*4}px;
+        width: ${100*4}px;
         margin: 0 auto;
         display: flex;
         flex-wrap: wrap;
       }
       .card {
-        width: 120px;
-        height: 90px;
+        width: 90px;
+        height: 60px;
         margin-bottom: 10px;
         margin-right: 0px;
       }
       .card:not(:nth-child(4n)) {
-        width: 120px;
-        height: 90px;
+        width: 90px;
+        height: 60px;
         margin-bottom: 10px;
         margin-right: 10px;
       }
 
       .c {
         position: absolute;
-        max-width: 120px;
-        max-height: 90px;
+        max-width: 90px;
+        max-height: 60px;
         width: 30ch;
         height: 30ch;
         cursor: pointer;
