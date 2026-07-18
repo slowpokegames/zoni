@@ -54,7 +54,7 @@ function ZoniGame({options, setOptions, highScore, setHighScore}) {
       return [z, o, n, i]
     }
     function cardIsMatch(c0, c1, c2) {
-      for (let i = 0; i < 3; i++) {
+      for (let i = 0; i < 4; i++) {
         if ((c0[i] + c1[i]) % 3 !== c2[i]) return false;
       }
       return true;
